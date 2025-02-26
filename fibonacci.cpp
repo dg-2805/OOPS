@@ -41,10 +41,10 @@ int main(int argc, char *argv[]) {
 
 /*SAMPLE OUTPUT
 daria@DG MINGW64 ~/OneDrive/Documents/New
-$ g++ prime.cpp -o prime
+$ g++ fibo.cpp -o fibo
 
 daria@DG MINGW64 ~/OneDrive/Documents/New
-$ ./prime 12
+$ ./fibo 12
 0
 1
 1
@@ -59,10 +59,10 @@ $ ./prime 12
 89
 
 daria@DG MINGW64 ~/OneDrive/Documents/New
-$ g++ -DMAX=7  prime.cpp -o prime
+$ g++ -DMAX=7  fibo.cpp -o fibo
 
 daria@DG MINGW64 ~/OneDrive/Documents/New
-$ ./prime 12
+$ ./fibo 12
 0
 1
 1
