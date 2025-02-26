@@ -12,6 +12,10 @@ using namespace std;
 #define MAX 100
 #endif
 
+#ifndef MIN
+#define MIN 1
+#endif
+
 void prime(int lb, int ub) {
     int i, j, flag;
 
