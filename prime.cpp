@@ -98,8 +98,6 @@ daria@DG MINGW64 ~/OneDrive/Documents/New
 $ ./prime
 Enter lower bound: 0
 Enter upper bound: 90
-2
-3
 5
 7
 11
