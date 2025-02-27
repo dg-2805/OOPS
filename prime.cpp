@@ -42,8 +42,8 @@ int main() {
     cout << "Enter upper bound: ";
     cin >> ub;
 
-    if (lb < 2) {
-        lb = 2;
+    if (lb < MIN) {
+        lb = MIN;
     }
 
     if (ub > MAX) {
