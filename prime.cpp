@@ -2,7 +2,7 @@
 range. You need to check if the range given by the user is within MIN and MAX limit defined by macro. if
 not, It prints prime numbers within the range defined by macro. Like check if lb is smaller than MIN then
 it reset it to MIN value defined as a constant during compilation as compiler argument –D. If not defined
-by the compiler, a default value of 1 can be taken as value of MIN. Similarly for MAX default value is 100.*/
+by the compiler, a default value of 1 can be taken as value of MIN.Similarly for MAX default value is 100.*/
 
 #include <iostream>
 
