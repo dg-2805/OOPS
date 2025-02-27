@@ -70,4 +70,32 @@ CSE
 80
 90
 245
+
+Enter name: Rohan
+Enter roll no: 102
+Enter branch: ECE
+Enter Maths: 85
+Enter Physics: 78
+Enter Chemistry: 82
+Rohan
+102
+ECE
+85
+78
+82
+245
+
+Enter name: Priya
+Enter roll no: 103
+Enter branch: ME
+Enter Maths: 90
+Enter Physics: 88
+Enter Chemistry: 79
+Priya
+103
+ME
+90
+88
+79
+257
   */
