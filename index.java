@@ -1,3 +1,8 @@
+/*1. Write a program which uses three command-line arguments to initialize an array. When the
+program executes, if args.length is not 3, the program prints an error message and terminates
+Otherwise, it initialize and display the array based on the values of the command-line
+arguments. The args[ 0 ] specifies the array size, args[ 1 ] and args[ 2 ] are initial value and
+increment respectively. Calculate the value for each array element.*/
 public class index {
     public static void main(String[] args) {
         if (args.length != 3) {
