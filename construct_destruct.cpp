@@ -11,12 +11,13 @@ object creation. Write down observations the order the objects are created and d
 program by using the concept of pointer to objects. Create dynamic object using new operator and use
 delete for destruction for the class Myclass.*/
 #include <iostream>
+
 using namespace std;
 
 class MyClass {
-public:
     int x;
 
+public:
     // Default Constructor
     MyClass() {
         x = 0;
@@ -30,84 +31,84 @@ public:
     }
 
     // Copy Constructor
-    MyClass(MyClass &obj) {
+    MyClass(const MyClass &obj) {
         x = obj.x;
         cout << "Copy Constructor called. x = " << x << endl;
     }
 
     // Destructor
     ~MyClass() {
-        cout << "Destructor called. x = " << x << endl;
+        cout << "Destructor called for x = " << x << endl;
     }
 
-    // Member function to display value of x
+    // Display function
     void display() {
         cout << "Value of x: " << x << endl;
     }
 };
 
-// Global object
-MyClass globalObj(10);
+// Global object (created before main() runs, destroyed after main() ends)
+MyClass globalObj(100);
 
-// Function to demonstrate local objects
-void demoFunction() {
-    cout << "\nInside demoFunction():" << endl;
-    MyClass localFuncObj(20); // Local object in function
-    localFuncObj.display();
-    cout << "Exiting demoFunction()." << endl;
-}
+void functionScope() {
+    cout << "\nEntering functionScope()" << endl;
+    MyClass localFuncObj(50); // Local object inside function
+    cout << "Exiting functionScope()\n" << endl;
+} // localFuncObj gets destroyed here
 
 int main() {
-    cout << "\nInside main():" << endl;
+    cout << "\nEntering main()" << endl;
 
-    // Local object in main
-    MyClass localMainObj(30);
-    localMainObj.display();
+    // Local object in main()
+    MyClass obj1;  
+    MyClass obj2(20); 
+    MyClass obj3 = obj2; // Copy constructor
 
-    // Object copy of another object
-    MyClass copiedObj(localMainObj);
-    copiedObj.display();
+    // Creating dynamic object using new
+    cout << "\nCreating dynamic object...\n";
+    MyClass *dynObj = new MyClass(30);
 
-    // Call function to demonstrate local objects
-    demoFunction();
+    // Display dynamic object value
+    dynObj->display();
 
-    // Dynamic object creation using new
-    cout << "\nCreating dynamic object:" << endl;
-    MyClass *dynamicObj = new MyClass(40);
-    dynamicObj->display();
+    // Calling function that creates an object locally
+    functionScope();
 
-    // Destroy dynamic object using delete
-    cout << "Deleting dynamic object:" << endl;
-    delete dynamicObj;
+    // Deleting dynamic object
+    cout << "\nDeleting dynamic object...\n";
+    delete dynObj;
 
-    cout << "\nExiting main()." << endl;
+    cout << "\nExiting main()\n" << endl;
     return 0;
-}
+} // All local objects in main() are destroyed here
+
 
 
 /*OUTPUT
-Parameterized Constructor called. x = 10
+Parameterized Constructor called. x = 100
 
-Inside main():
+Entering main()
+Default Constructor called. x = 0
+Parameterized Constructor called. x = 20
+Copy Constructor called. x = 20
+
+Creating dynamic object...
 Parameterized Constructor called. x = 30
 Value of x: 30
-Copy Constructor called. x = 30
-Value of x: 30
 
-Inside demoFunction():
-Parameterized Constructor called. x = 20
-Value of x: 20
-Exiting demoFunction().
-Destructor called. x = 20
+Entering functionScope()
+Parameterized Constructor called. x = 50
+Exiting functionScope()
 
-Creating dynamic object:
-Parameterized Constructor called. x = 40
-Value of x: 40
-Deleting dynamic object:
-Destructor called. x = 40
+Destructor called for x = 50
 
-Exiting main().
-Destructor called. x = 30
-Destructor called. x = 30
-Destructor called. x = 10
+Deleting dynamic object...
+Destructor called for x = 30
+
+Exiting main()
+
+Destructor called for x = 20
+Destructor called for x = 0
+Destructor called for x = 100
+
 */
