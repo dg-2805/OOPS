@@ -1,4 +1,4 @@
-/*Q1. Create a class MyClass which has member variable x of integer type and have the following
+/*Create a class MyClass which has member variable x of integer type and have the following
 constructors
 MyClass( ) // Default
 MyClass(int)// Parameterized
