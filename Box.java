@@ -9,6 +9,7 @@ objects using each constructor and call the volume function to print the volume.
 Write a method called “equals” in the “Box” class. “equals” method has only one parameter of
 type Box. Use this function to check whether two boxes are identical or not.*/
 
+
 class Box {
     private int width, height, length;
 
@@ -45,7 +46,10 @@ class Box {
     public boolean equals(Box other) {
         return this.width == other.width && this.height == other.height && this.length == other.length;
     }
-
+    // Removed finalize method as it is deprecated
+    protected void finalize() {
+        System.out.println("Object destroyed");
+    }
     public static void main(String[] args) {
         Box defaultBox = new Box();
         Box cube = new Box(3);
@@ -59,18 +63,28 @@ class Box {
 
         System.out.println("Rectangular box and copied box are identical: " + rectangularBox.equals(copiedBox));
         System.out.println("Cube and rectangular box are identical: " + cube.equals(rectangularBox));
+
+        defaultBox = null;
+        cube = null;
+        rectangularBox = null;
+        copiedBox = null;
+        System.gc();
     }
 }
 
+
 /*OUTPUT
- javac Box.java
+$ javac Box.java
 
 $ java Box
-
 Volume of default box: 1
 Volume of cube: 27
 Volume of rectangular box: 48
 Volume of copied box: 48
 Rectangular box and copied box are identical: true
 Cube and rectangular box are identical: false
+Object destroyed
+Object destroyed
+Object destroyed
+Object destroyed
 */
