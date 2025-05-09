@@ -1,0 +1,125 @@
+#QUESTION
+1. Create a package named MypackStudent: 
+● Inside the package, define a class named Student. 
+● The Student class should include the following instance variables: 
+o St_name (String) – Student's name 
+o St_id (String) – Student ID 
+o Department_name (String) – Department name 
+o Mobile_No (String) – Student's mobile number 
+● Implement two methods in the Student class: 
+o getData() – to accept input for the above fields. 
+o printData() – to display the student information. 
+Create a subclass named Exam in a different file (outside the MypackStudent package): 
+● Exam class should inherit from the Student class. 
+● Add the following additional variables: 
+o Marks1 (int) – Marks in Subject 1 
+o Marks2 (int) – Marks in Subject 2 
+o Marks3 (int) – Marks in Subject 3 
+● Implement the following methods: 
+o getData() – to input marks along with inherited student details. 
+o printData() – to print both student and marks details. 
+o printAverage() – to print student name along with average marks out of 100. 
+Requirements: 
+● Use inheritance to access and reuse student information in the Exam class. 
+● You must import the MypackStudent package in the file containing the Exam class. 
+● Follow Java conventions for package naming and file structure. 
+● Use Scanner for taking input from the user.
+
+/root/MypackStudent/Student.java
+
+#CODE
+package MypackStudent;
+
+import java.util.Scanner;
+
+public class Student {
+    protected String St_name, St_id, Department_name, Mobile_No;
+    Scanner sc = new Scanner(System.in);
+
+    public void getData() {
+        System.out.print("Enter Name: ");
+        St_name = sc.nextLine();
+
+        System.out.print("Enter ID: ");
+        St_id = sc.nextLine();
+
+        System.out.print("Enter Department: ");
+        Department_name = sc.nextLine();
+
+        System.out.print("Enter Mobile Number: ");
+        Mobile_No = sc.nextLine();
+    }
+
+    public void printData() {
+        System.out.println("Name: " + St_name);
+        System.out.println("ID: " + St_id);
+        System.out.println("Department: " + Department_name);
+        System.out.println("Mobile: " + Mobile_No);
+    }
+}
+
+/root/Exam.java
+#CODE
+import MypackStudent.Student;
+import java.util.Scanner;
+
+public class Exam extends Student {
+    private int Marks1, Marks2, Marks3;
+    private Scanner sc = new Scanner(System.in); // Added scanner object
+
+    public void getData() {
+        super.getData();
+        System.out.print("Enter Marks1: ");
+        Marks1 = sc.nextInt();
+        System.out.print("Enter Marks2: ");
+        Marks2 = sc.nextInt();
+        System.out.print("Enter Marks3: ");
+        Marks3 = sc.nextInt();
+    }
+
+    public void printData() {
+        super.printData();
+        System.out.println("Marks1: " + Marks1);
+        System.out.println("Marks2: " + Marks2);
+        System.out.println("Marks3: " + Marks3);
+    }
+
+    public void printAverage() {
+        double avg = (Marks1 + Marks2 + Marks3) / 3.0;
+        System.out.println("Average marks of " + St_name + ": " + avg + " out of 100");
+    }
+
+    public static void main(String[] args) {
+        Exam e = new Exam();
+        e.getData();
+        e.printData();
+        e.printAverage();
+    }
+}
+
+#OUTPUT
+$ cd MypackStudent/
+
+$ javac Student.java 
+
+$ cd ../
+
+$ javac Exam.java 
+
+$ java Exam
+
+Enter Name: DG
+Enter ID: 100
+Enter Department: CSE
+Enter Mobile Number: 1234567890
+Enter Marks1: 95
+Enter Marks2: 92
+Enter Marks3: 98
+Name: DG
+ID: 100
+Department: CSE
+Mobile: 1234567890
+Marks1: 95
+Marks2: 92
+Marks3: 98
+Average marks of DG: 95.0 out of 100
